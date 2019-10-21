@@ -1,0 +1,15 @@
+.search-results {
+    height: calc(100vh - 40px);
+
+    &__breadcrumb {
+
+        text-align: left;
+        height: 4%;
+    }
+
+    &__items-row {
+        height: 96%;
+        background-color: white;
+
+    }
+}

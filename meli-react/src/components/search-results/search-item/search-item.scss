@@ -1,0 +1,49 @@
+@import "../../../assets//styles/variables";
+
+@mixin cellphone {
+    @media (max-width: #{$tablet-width}) {
+        @content;
+    }
+}
+
+.search-results {
+    &__item {
+        cursor: pointer;
+        border: 1px solid #7f7f7f17;
+        height: 25%;
+        display: flex;
+        padding: 2% 0%;
+        width: 100%;
+        text-align: left;
+
+        &__image {
+            height: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &__description {
+            @include cellphone {
+
+                h2,
+                h3 {
+
+                    font-size: 1rem;
+                }
+            }
+
+            height: 100%;
+        }
+
+        &__location {
+            h6 {
+                padding-top: 5%;
+            }
+
+            height: 100%;
+        }
+    }
+}

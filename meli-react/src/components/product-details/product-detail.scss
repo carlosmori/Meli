@@ -1,0 +1,40 @@
+.product-detail {
+    height: calc(100vh - 40px);
+    background-color: white;
+    text-align: left;
+
+    &__breadcrumb {
+        text-align: left;
+        height: 4%;
+    }
+
+    &__item {
+        height: 68%;
+
+        &__image {
+            height: 100%;
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        &__price-detail {
+            height: 100%;
+
+            button {
+                width: 100%;
+            }
+        }
+
+    }
+
+    &__description {
+        height: 28%;
+
+        .col {
+            height: 100%;
+        }
+    }
+}

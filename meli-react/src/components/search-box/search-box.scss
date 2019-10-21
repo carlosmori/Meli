@@ -1,0 +1,68 @@
+@import "../../assets//styles/variables";
+
+@mixin cellphone {
+    @media (max-width: #{$tablet-width}) {
+        @content;
+    }
+}
+
+.search-box {
+    background-color: #fee600;
+    height: 40px;
+
+    &__container {
+        height: 100%;
+        padding: 7px 0px;
+
+        @include cellphone {
+            padding: 7px 7px;
+        }
+
+        &__meli-logo {
+            vertical-align: top;
+            height: 100%;
+            float: left;
+
+        }
+
+        &__search {
+
+            width: 95%;
+
+            @include cellphone {
+                width: 85%;
+            }
+
+            float: right;
+            height: 100%;
+            position: relative;
+
+            &__input {
+                width: 100%;
+                height: 100%;
+                border: 0;
+                padding-left: 2%;
+            }
+
+            &__icon {
+                background-color: #ebeded;
+                color: #8d8e89;
+
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+                width: 5%;
+
+                @include cellphone {
+                    width: 10%;
+                }
+
+                svg {
+                    height: 100%;
+                }
+
+            }
+        }
+    }
+}
