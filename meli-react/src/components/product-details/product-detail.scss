@@ -9,8 +9,6 @@
 .product-detail {
     text-align: left;
 
-    &__breadcrumb {}
-
     &__item {
         @include cellphone {
             flex-direction: column;

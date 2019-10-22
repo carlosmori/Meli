@@ -1,14 +1,10 @@
+import React from 'react'
 import {Breadcrumb as BootStrapBreadcrumb} from 'react-bootstrap/'
-import React, {useEffect} from 'react'
 
-const Breadcrumb = props => {
-  useEffect(() => {
-    console.log(props)
-  }, [props])
-
+const Breadcrumb = ({categories}) => {
   return (
     <BootStrapBreadcrumb>
-      {props.categories.map((category, index) => (
+      {categories.map((category, index) => (
         <BootStrapBreadcrumb.Item href="#" key={index}>
           {category.label}
         </BootStrapBreadcrumb.Item>

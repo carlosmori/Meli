@@ -6,13 +6,14 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import {useHistory} from 'react-router-dom'
 import {connect} from 'react-redux'
-
-const SearchBox = props => {
+const SearchBox = () => {
   const [searchBoxInput, setSearchBoxInput] = useState('')
   let history = useHistory()
 
   const searchProduct = () => {
-    history.push(`/items?search=${searchBoxInput}`)
+    searchBoxInput === ''
+      ? alert('Please enter an item')
+      : history.push(`/items?search=${searchBoxInput}`)
   }
   const redirectHome = () => {
     history.push(`/`)

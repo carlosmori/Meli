@@ -4,7 +4,9 @@ import {ITEM_DETAIL} from '../types/types'
 const initialState = {
   loading: false,
   detail: {
-    item: {},
+    item: {
+      price: {},
+    },
     categories: [],
   },
   error: {},

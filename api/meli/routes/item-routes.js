@@ -5,43 +5,21 @@ var Item = require('../domain/item')
 var Category = require('../domain/category')
 router.get('/', async function(req, res, next) {
   if (req.query && req.query.q) {
-    const productsResponse = await axios.get(
+    const searchResponse = await axios.get(
       `https://api.mercadolibre.com/sites/MLA/search?q=${req.query.q}`
     )
-    const products = productsResponse.data.results
+    const items = searchResponse.data.results
     const categoriesResponse = await axios.get(
-      `https://api.mercadolibre.com/categories/${products[0].category_id}`
+      `https://api.mercadolibre.com/categories/${items[0].category_id}`
     )
-    const productCategories = categoriesResponse.data.path_from_root
+    const itemCategories = categoriesResponse.data.path_from_root
     const newResponse = {
       author: {
         name: 'Carlos',
         lastname: 'Mori',
       },
-      categories: productCategories.map(category => new Category({label: category.name})),
-      items: products.slice(0, 4).map(product => {
-        //Im not seeing any decimals in the response
-        const {
-          id,
-          title,
-          price,
-          currency_id,
-          thumbnail,
-          condition,
-          shipping,
-          address,
-        } = product
-        return new Item({
-          id,
-          title,
-          currency_id,
-          price,
-          thumbnail,
-          condition,
-          shipping,
-          address,
-        })
-      }),
+      categories: itemCategories.map(category => new Category({label: category.name})),
+      items: items.slice(0, 4).map(item => new Item(item)),
     }
     res.send(newResponse)
   } else {
@@ -61,32 +39,12 @@ router.get('/:id', async function(req, res) {
     const categoriesResponse = await axios.get(
       `https://api.mercadolibre.com/categories/${item.category_id}`
     )
-    const productCategories = categoriesResponse.data.path_from_root
+    const itemCategories = categoriesResponse.data.path_from_root
 
-    const {
-      id,
-      title,
-      price,
-      currency_id,
-      thumbnail,
-      condition,
-      shipping,
-      sold_quantity,
-    } = item
     description
     newResponse = {
-      item: new Item({
-        id,
-        title,
-        price,
-        currency_id,
-        thumbnail,
-        condition,
-        shipping,
-        sold_quantity,
-        description,
-      }),
-      categories: productCategories.map(category => new Category({label: category.name})),
+      item: new Item({...item, description}),
+      categories: itemCategories.map(category => new Category({label: category.name})),
     }
 
     res.send(newResponse)
