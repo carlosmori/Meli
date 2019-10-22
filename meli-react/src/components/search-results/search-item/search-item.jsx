@@ -1,28 +1,40 @@
 import React from 'react'
 import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 import './search-item.scss'
 import {useHistory} from 'react-router-dom'
+import NumberFormat from 'react-number-format'
 
 const SearchItem = ({product}) => {
   let history = useHistory()
   const productDetailRedirect = () => {
-    alert('holix')
-    history.push('/items/1')
+    history.push(`/items/${product.id}`)
   }
   return (
-    <div className="search-results__item" onClick={productDetailRedirect}>
-      <Col xs lg="2" className="search-results__item__image">
-        <img src={product.picture} alt="" />
+    <Row className="search-results__item" onClick={productDetailRedirect}>
+      <Col xs="12" lg="2" className="search-results__item__img-container">
+        <img
+          className="search-results__item__img-container__img"
+          src={product.picture}
+          alt=""
+        />
       </Col>
-      <Col xs lg="8" className="search-results__item__description">
-        <h2>$ {product.price.amount}</h2>
-        <h3>{product.title}</h3>
+      <Col xs="12" lg="8" className="search-results__item__description">
+        <h1 className="search-results__item__description__price">
+          <NumberFormat
+            value={product.price.amount}
+            displayType={'text'}
+            thousandSeparator={true}
+            prefix={'$'}
+            renderText={value => <div>{value}</div>}
+          />
+        </h1>
+        <h2 className="search-results__item__description__title">{product.title}</h2>
       </Col>
-      <Col xs lg="2" className="search-results__item__location">
-        {/* //@todo grab location from api, rework */}
-        <h6>Capital Federal</h6>
+      <Col xs="12" lg="2" className="search-results__item__location">
+        <h6 className="search-results__item__location__title">{product.location}</h6>
       </Col>
-    </div>
+    </Row>
   )
 }
 export default SearchItem

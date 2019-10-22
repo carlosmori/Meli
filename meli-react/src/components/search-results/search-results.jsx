@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -7,25 +7,31 @@ import {connect} from 'react-redux'
 import queryString from 'query-string'
 import {searchItemAction} from '../../state/actions/actions'
 import SearchItem from './search-item/search-item'
+import Breadcrumb from '../breadcrumb/breadcrumb'
 const SearchResults = ({location, searchItemAction, searchResults}) => {
   useEffect(() => {
     const locationParams = queryString.parse(location.search)
-    searchItemAction({itemName: locationParams.search})
+    if (searchResults.itemName !== locationParams.search) {
+      searchItemAction({itemName: locationParams.search})
+    }
+
     return () => {}
-  }, [location])
+  }, [location.search])
 
   return (
     <Container className="search-results">
-      <Row className="search-results__breadcrumb">
+      <Row>
         <Col>
-          <div>Breadcrumb</div>
+          <div className="search-results__breadcrumb">
+            <Breadcrumb categories={searchResults.categories} />
+          </div>
         </Col>
       </Row>
-      <Row className="search-results__items-row">
+      <div className="search-results__items-row">
         {searchResults.items.map(product => (
           <SearchItem key={product.id} product={product} />
         ))}
-      </Row>
+      </div>
     </Container>
   )
 }

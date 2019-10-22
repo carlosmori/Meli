@@ -12,11 +12,11 @@
 
     &__container {
         height: 100%;
-        padding: 7px 0px;
+        padding: 7px 15px;
 
-        @include cellphone {
-            padding: 7px 7px;
-        }
+        // @include cellphone {
+        //     padding: 7px 7px;
+        // }
 
         &__meli-logo {
             vertical-align: top;
@@ -53,16 +53,28 @@
                 right: 0;
                 height: 100%;
                 width: 5%;
+                text-align: center;
 
                 @include cellphone {
                     width: 10%;
                 }
 
-                svg {
+                &__svg {
                     height: 100%;
                 }
 
             }
         }
+
+        &__row {
+            height: 100%;
+
+        }
+
+        &__col {
+            height: 100%;
+
+        }
     }
+
 }

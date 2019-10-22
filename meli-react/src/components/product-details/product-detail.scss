@@ -1,18 +1,22 @@
+@import "../../assets//styles/variables";
+
+@mixin cellphone {
+    @media (max-width: #{$tablet-width}) {
+        @content;
+    }
+}
+
 .product-detail {
-    height: calc(100vh - 40px);
-    background-color: white;
     text-align: left;
 
-    &__breadcrumb {
-        text-align: left;
-        height: 4%;
-    }
+    &__breadcrumb {}
 
     &__item {
-        height: 68%;
+        @include cellphone {
+            flex-direction: column;
+        }
 
         &__image {
-            height: 100%;
 
             img {
                 height: 100%;
@@ -21,7 +25,9 @@
         }
 
         &__price-detail {
-            height: 100%;
+            @include cellphone {
+                margin: 10% 0%;
+            }
 
             button {
                 width: 100%;
@@ -31,10 +37,8 @@
     }
 
     &__description {
-        height: 28%;
-
-        .col {
-            height: 100%;
+        @include cellphone {
+            font-size: 1.3rem;
         }
     }
 }

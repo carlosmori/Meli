@@ -16,10 +16,8 @@ function App() {
       <div className="App">
         <Router history={history}>
           <Route path="/" component={SearchBox} />
-          {/* <WithBreadcrumb> */}
           <Route exact path="/items" component={SearchResults} />
           <Route path="/items/:id" component={ProductDetails} />
-          {/* </WithBreadcrumb> */}
         </Router>
       </div>
     </Provider>

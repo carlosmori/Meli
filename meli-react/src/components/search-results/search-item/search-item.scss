@@ -9,41 +9,30 @@
 .search-results {
     &__item {
         cursor: pointer;
-        border: 1px solid #7f7f7f17;
-        height: 25%;
-        display: flex;
+        border: 1px solid #eee;
         padding: 2% 0%;
-        width: 100%;
+        margin: 0% 2%;
         text-align: left;
+        background-color: white;
 
-        &__image {
-            height: 100%;
-
-            img {
-                width: 100%;
-                height: 100%;
-            }
+        @include cellphone {
+            flex-direction: column;
         }
 
-        &__description {
-            @include cellphone {
-
-                h2,
-                h3 {
-
-                    font-size: 1rem;
-                }
+        &__img-container {
+            &__img {
+                width: 100%;
             }
-
-            height: 100%;
         }
 
         &__location {
-            h6 {
+            &__title {
                 padding-top: 5%;
+
+
+
             }
 
-            height: 100%;
         }
     }
 }
