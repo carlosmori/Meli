@@ -9,8 +9,10 @@ router.get('/', async function(req, res, next) {
       `https://api.mercadolibre.com/sites/MLA/search?q=${req.query.q}`
     )
     const items = searchResponse.data.results
+    const mostRepeteadCategory = mode(items.map(item => item.category_id))
+
     const categoriesResponse = await axios.get(
-      `https://api.mercadolibre.com/categories/${items[0].category_id}`
+      `https://api.mercadolibre.com/categories/${mostRepeteadCategory}`
     )
     const itemCategories = categoriesResponse.data.path_from_root
     const newResponse = {
@@ -54,5 +56,20 @@ router.get('/:id', async function(req, res) {
     res.send('Please provide an id')
   }
 })
-
+function mode(array) {
+  if (array.length == 0) return null
+  var modeMap = {}
+  var maxEl = array[0],
+    maxCount = 1
+  for (var i = 0; i < array.length; i++) {
+    var el = array[i]
+    if (modeMap[el] == null) modeMap[el] = 1
+    else modeMap[el]++
+    if (modeMap[el] > maxCount) {
+      maxEl = el
+      maxCount = modeMap[el]
+    }
+  }
+  return maxEl
+}
 module.exports = router
