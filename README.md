@@ -3,6 +3,8 @@ This Test was made using React and Node JS. The app is full responsive and uses 
 Things to take into account:
 -I wanted to include Unit testing and some lazy loading but I dont have anought time. 
 -I wanted to do more work on the UI but I need to deliver
+-There is no Spinner nor informative Snackbar when loading data, not enough time. 
+Please check [Github -> Charly´s Restaurant (WIP)](https://github.com/carlosmori/Restaurant)
 
 ## Quick Overview:
 Node JS Server:
