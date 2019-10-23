@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -14,8 +14,6 @@ const SearchResults = ({location, searchItemAction, searchResults}) => {
     if (searchResults.itemName !== locationParams.search) {
       searchItemAction({itemName: locationParams.search})
     }
-
-    return () => {}
   }, [location.search])
 
   return (

@@ -13,7 +13,7 @@ var ItemService = {
       axios.get(`https://api.mercadolibre.com/items/${itemId}`),
       axios.get(`https://api.mercadolibre.com/items/${itemId}/description`),
     ])
-    return {...responses[0].data, ...responses[1].data}
+    return {...responses[0].data, description: responses[1].data}
   },
 
   getMostRepeatedCategory: array => {
