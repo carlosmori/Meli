@@ -1,5 +1,9 @@
 # Mercado Libre Frontend Test
-This Test was made using React and Node JS. 
+This Test was made using React and Node JS. The app is full responsive and uses Redux for store management.
+Things to take into account:
+-I wanted to include Unit testing and some lazy loading but I dont have anought time. 
+-I wanted to do more work on the UI but I need to deliver
+
 ## Quick Overview:
 Node JS Server:
 ```
