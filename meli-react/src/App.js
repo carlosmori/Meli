@@ -7,7 +7,6 @@ import SearchResults from './components/search-results/search-results'
 import {createBrowserHistory} from 'history'
 import {Provider} from 'react-redux'
 import configureStore from './state/store'
-import WithBreadcrumb from './hocs/withBreadcrumb'
 const App = () => {
   const history = createBrowserHistory()
 
