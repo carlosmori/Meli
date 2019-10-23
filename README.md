@@ -16,6 +16,7 @@ React App:
 cd meli-react
 npm install
 npm start
+Open http://localhost:3001/
 ```
 ## Packages used in this Test:
 Node JS: Express Js, Axios
